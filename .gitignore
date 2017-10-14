@@ -100,3 +100,8 @@ cryptoenv/
 
 # mypy
 .mypy_cache/
+
+.vscode/
+answers.txt
+hints.txt
+*.db
