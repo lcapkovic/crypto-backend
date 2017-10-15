@@ -11,7 +11,7 @@ def load_answers():
     global answers
 
     print("Loading answers...")
-    with open('answers.txt') as f:
+    with open('answers.txt', encoding='utf-8') as f:
         answers = [line.rstrip('\n') for line in f]
     print("Loaded answers:")
     print(answers)
@@ -19,7 +19,7 @@ def load_answers():
 def load_hints():
     global hints
     print("Loading hints...")
-    with open('hints.txt') as f:
+    with open('hints.txt', encoding='utf-8') as f:
         data = f.read()
         hints = [hint.strip() for hint in data.split('----')]
     print("Loaded hints:")
