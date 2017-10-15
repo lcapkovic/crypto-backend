@@ -34,6 +34,7 @@ def load_hints():
 
 @app.after_request
 def treat_as_plain_text(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers["content-type"] = "text/plain"
     return response
 
