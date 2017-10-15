@@ -43,7 +43,7 @@ def add_submission(problem, answer, correctInt):
 def count_all_submissions(problem):
 	con = sql.connect("db/database.db")
 	cur = con.cursor()
-	cur.execute("SELECT COUNT(*) FROM submissions WHERE problemId=?", str(problem))
+	cur.execute("SELECT COUNT(*) FROM submissions WHERE problemId=?", (str(problem),))
 	count = cur.fetchall()
 	con.close()
 	return count[0][0]
@@ -51,7 +51,7 @@ def count_all_submissions(problem):
 def count_correct_submissions(problem):
 	con = sql.connect("db/database.db")
 	cur = con.cursor()
-	cur.execute("SELECT COUNT(*) FROM submissions WHERE problemId=? AND correct=1", str(problem))
+	cur.execute("SELECT COUNT(*) FROM submissions WHERE problemId=? AND correct=1", (str(problem),))
 	count = cur.fetchall()
 	con.close()
 	return count[0][0]
