@@ -8,7 +8,7 @@ app = Flask(__name__)
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["15 per minute", "1 per second"],
+    default_limits=["1 per second"],
 )
 
 answers = []
@@ -65,6 +65,7 @@ def count_correct_submissions(problem):
 	return count[0][0]
 
 @app.route("/check_answer", methods=['GET'])
+@limiter.limit("2 per minute")
 def check_answer():
     problem = int(request.args.get('problem'))
     answer = request.args.get('answer')
